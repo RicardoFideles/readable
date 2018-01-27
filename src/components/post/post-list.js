@@ -1,6 +1,5 @@
 import './post-list.css'
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { fetchPosts } from '../../actions/posts';
 import { fetchCategories } from '../../actions/categories'
@@ -15,8 +14,13 @@ class PostList extends Component {
       }
 
     render() {
-        const { posts } = this.props
-
+        const category = this.props.category
+        let posts  = []
+        if (category) {
+            posts = this.props.posts.filter((p) => p.category === category)
+        } else {
+            posts = this.props.posts
+        }
         return(
             <div className="col-sm-12 col-md-9">
                 <div className="row">

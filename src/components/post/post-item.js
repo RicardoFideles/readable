@@ -14,7 +14,6 @@ const PostItem = ({id, title, voteScore, comments = [], author, timestamp, onUpV
                 <div className="entry-meta">
                     <Votes
                         onUpvote={() => {
-                                console.log('oi')
                                 onUpVotePost(id)
                         }}
                         onDownvote={() => onDownVotePost(id)}
@@ -28,9 +27,9 @@ const PostItem = ({id, title, voteScore, comments = [], author, timestamp, onUpV
             <div className="post-content-wrap col-sm-12 col-md-10">
                 <header className="page-header">
                     <h1 className="entry-title">
-                        <a href="#" rel="bookmark">
+                        <Link to={`/posts/${id}`}>
                             {title}
-                        </a>
+                        </Link>
                     </h1>
                 </header>
                 <p className='author-date-time'>by <b>{author}</b> at {formatDate(timestamp)}</p>

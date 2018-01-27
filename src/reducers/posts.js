@@ -5,9 +5,9 @@ export default function posts(state = { posts: [] }, action) {
 
     switch (action.type) {
         case types.GET_POSTS:
-            action.post.comments = action.comments
             return {
-                posts: [...state.posts, action.post]
+                ...state,
+                posts: action.posts
              }
         case types.ADD_NEW_POST:
              return {

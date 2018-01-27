@@ -3,18 +3,23 @@ import { getAllPosts, getComments, addNewPost, votePost } from '../api/index'
 
 export const fetchPosts = () => dispatch => (
     getAllPosts()
-        .then(posts => {
-            posts.map(post => {
-                getComments(post.id)
-                .then(comments => {
-                    dispatch({
+        .then(posts =>
+            Promise.all(
+                posts.map(post =>
+                    getComments(post.id)
+                        .then(comments => (post.comments = comments))
+                        .then(() => post)
+                )
+            )
+            .then(posts => dispatch
+                ({
                     type: types.GET_POSTS,
-                    post,
-                    comments
-                    })
-                })
-            })
-        })
+                    posts,
+                }
+
+                )
+            )
+        )
     )
 
 export const addPost = (post) => dispatch => (
