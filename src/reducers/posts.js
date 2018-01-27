@@ -14,6 +14,16 @@ export default function posts(state = { posts: [] }, action) {
                ...state,
                posts: [...state.posts, action.post]
              }
+        case types.UPDATE_VOTE:
+            return {
+                ...state,
+                posts :  state.posts.map(post => {
+                            if (post.id === action.post.id) {
+                                post = action.post
+                            }
+                            return post
+                        })
+            }
         default:
             return state;
     }

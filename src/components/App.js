@@ -11,11 +11,11 @@ class App extends Component {
     return (
       <div className='wrapper'>
         <Header/>
-        <div class="container">
-            <div id="content" class="main-content-inner">
+        <div className="container">
+            <div id="content" className="main-content-inner">
               <div className="row">
                 <Content/>
-                <div class="col-sm-12 col-md-3">
+                <div className="col-sm-12 col-md-3">
                   <Sibebar />
                 </div>
 

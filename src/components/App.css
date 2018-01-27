@@ -13462,14 +13462,14 @@ padding: 14px 0 18px;
 text-align: center;
 background-color: #1ABC9C;
 }
-.post-meta-info .entry-meta .comments_count a {
+.post-meta-info .entry-meta .comments_count span {
 display: inline-block;
 padding: 0 0 0 25px;
 background: url(//ricardofideles.com.br/wp-content/themes/ascent/includes/images/comment-count-icon.png) 0 3px no-repeat;
 font-weight: 700;
 color: #FFF;
 }
-.post-meta-info .entry-meta .comments_count a:hover {
+.post-meta-info .entry-meta .comments_count span:hover {
 text-decoration: none;
 -moz-opacity: 0.6;
 -khtml-opacity: 0.6;
@@ -13681,7 +13681,7 @@ font-weight: normal;
 background: none;
 padding: 0;
 }
-.post-meta-info .entry-meta .comments_count a {
+.post-meta-info .entry-meta .comments_count span {
 background: none;
 display: inline;
 color: #3A3C41;
