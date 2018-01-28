@@ -1,8 +1,16 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { formatDate } from '../../utils'
 import CommentForm from './comment-form'
+import { onDeleteComment } from '../../actions/comments';
 
 class CommentList extends Component {
+
+    onCommentDelete = (comment) => {
+        let parentId = comment.parentId
+        this.props.deleteComment(comment.id, parentId)
+    }
+
     render() {
         const {id} = this.props
         let {comments} = this.props
@@ -36,9 +44,7 @@ class CommentList extends Component {
                                                 Editar
                                             </a>
                                             <br/><br/>
-                                            <a rel="nofollow" className="comment-reply-link btn btn-primary" href="">
-                                                Apagar
-                                            </a>
+                                            <button className="comment-reply-link btn btn-primary" onClick={() => this.onCommentDelete(c)}>Apagar</button>
                                         </div>
                                     </div>
                                 </div>
@@ -51,4 +57,5 @@ class CommentList extends Component {
     }
 }
 
-export default CommentList
+
+export default connect(null, { deleteComment : onDeleteComment } )(CommentList)

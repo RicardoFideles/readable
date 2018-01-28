@@ -31,6 +31,29 @@ export default function posts(state = { posts: [] }, action) {
                 ...state,
                 posts: [].concat(state.posts.sort(sortBy("-"+action.sortKey)))
             }
+
+        case types.ADD_COMMENT:
+            return {
+                ...state,
+                posts: state.posts.map(post => {
+                    if (post.id === action.parentId) {
+                        post.comments = [...post.comments, action.comment]
+                    }
+                    return post
+                })
+
+            }
+        case types.DELETE_COMMENT:
+        return {
+            ...state,
+            posts: state.posts.map(post => {
+                if (post.id === action.parentId) {
+                    post.comments = post.comments.filter((c) => c.id !== action.commentId)
+                }
+                return post
+            })
+
+        }
         default:
             return state;
     }

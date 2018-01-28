@@ -8,8 +8,6 @@ const headers = {
   'Authorization': "srxad0jy"
 }
 
-
-
 // GET /categories
 export const getAllCategories = () => {
   return fetch(`${api}/categories`, { headers : {

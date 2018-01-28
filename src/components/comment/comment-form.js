@@ -12,7 +12,7 @@ class CommentForm extends Component {
                         <textarea placeholder="..." id="comment" className="form-control" name="comment" cols="45" rows="8" aria-required="true"></textarea>
                     </p>
                     <p className="comment-form-author">
-                        <label for="author">Nome</label>
+                        <label>Nome</label>
                         <input id="author" name="author" type="text" size="30"/>
                     </p>
                     <p className="form-submit">
