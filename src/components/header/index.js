@@ -18,9 +18,9 @@ const Header = () => (
                 <div className="site-header-inner col-sm-12">
                   <div className="site-branding">
                     <h1 className="site-title">
-                      <a href="http://ricardofideles.com.br/" title="Ricardo Fideles" rel="home">
+                      <Link to='/'>
                         Ricardo Fideles
-                      </a>
+                      </Link>
                     </h1>
                     <h4>
                         Udacity - Readable Project

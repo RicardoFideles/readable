@@ -21,7 +21,6 @@ class PostForm extends Component {
 
   editPost = (e) => {
     e.preventDefault()
-    console.log(this.props)
     const postId = this.props.post.id
     const title = e.target.title.value
     const body = e.target.body.value

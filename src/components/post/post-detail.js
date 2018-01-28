@@ -21,8 +21,6 @@ class PostDetail extends Component {
             return null
         }
 
-        console.log(post)
-
         return(
             <div className="row">
                 <article className="post type-post status-publish format-standard hentry">

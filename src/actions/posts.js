@@ -61,3 +61,26 @@ export const updatePost = (id, data) => dispatch => (
             })
         })
 )
+
+
+const timeStampKey = types.SORT_KEY_TIMESTAMP
+
+export const sortPostByTimeStamp = () => {
+    return  dispatch => {
+        dispatch({
+            type: types.SORT_POST,
+            sortKey: timeStampKey
+        })
+    }
+}
+
+
+const voteScoreKey = types.SORT_KEY_VOTE_SCORE
+
+export const sortPostByVoteScore = () => dispatch => (
+    dispatch({
+        type: types.SORT_POST,
+        sortKey: voteScoreKey
+    })
+)
+

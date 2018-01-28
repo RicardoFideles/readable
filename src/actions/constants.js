@@ -9,10 +9,13 @@ export const REMOVE_POST = 'REMOVE_POST'
 export const DELETE_POSTS = 'DELETE_POSTS'
 export const UPDATE_VOTE = 'UPDATE_VOTE'
 export const VOTE_POST = 'VOTE_POST'
-export const CHANGE_SORT = 'CHANGE_SORT'
+export const SORT_POST = 'SORT_POST'
 export const ADD_COMMENT = 'ADD_COMMENT'
 export const DELETE_COMMENT = 'DELETE_COMMENT'
 export const EDIT_COMMENT = 'EDIT_COMMENT'
 export const UPVOTE_COMMENT = 'UPVOTE_COMMENT'
 export const OPTION_UPVOTE = 'upVote';
 export const OPTION_DOWNVOTE = 'downVote';
+export const SORT_KEY_TIMESTAMP = "timestamp"
+export const SORT_KEY_VOTE_SCORE = "voteScore"
+

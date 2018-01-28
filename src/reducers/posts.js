@@ -1,5 +1,6 @@
 
 import * as types from '../actions/constants';
+import sortBy from 'sort-by'
 
 export default function posts(state = { posts: [] }, action) {
 
@@ -23,6 +24,11 @@ export default function posts(state = { posts: [] }, action) {
                             }
                             return post
                         })
+            }
+        case types.SORT_POST:
+            return {
+                ...state,
+                posts: [].concat(state.posts.sort(sortBy("-"+action.sortKey)))
             }
         default:
             return state;
