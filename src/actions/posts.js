@@ -15,9 +15,13 @@ export const fetchPosts = () => dispatch => (
                 ({
                     type: types.GET_POSTS,
                     posts,
-                }
-
-                )
+                })
+            )
+            .then(res => dispatch
+                ({
+                    type: types.SORT_POST,
+                    sortKey: voteScoreKey
+                })
             )
         )
     )
@@ -66,6 +70,7 @@ export const updatePost = (id, data) => dispatch => (
 const timeStampKey = types.SORT_KEY_TIMESTAMP
 
 export const sortPostByTimeStamp = () => {
+    console.log('sortPostByTimeStamp')
     return  dispatch => {
         dispatch({
             type: types.SORT_POST,
