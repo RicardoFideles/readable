@@ -21,7 +21,7 @@ export default function posts(state = { posts: [] }, action) {
                 ...state,
                 posts :  state.posts.map(post => {
                             if (post.id === action.post.id) {
-                                post = action.post
+                                post.voteScore = action.post.voteScore
                             }
                             return post
                         })
