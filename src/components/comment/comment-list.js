@@ -6,20 +6,49 @@ import { onDeleteComment } from '../../actions/comments';
 
 class CommentList extends Component {
 
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            isEdit: false,
+            parentId : 0,
+            comment : {}
+        }
+
+        this.onSelectComment = this.onSelectComment.bind(this);
+    }
+
+    componentWillMount() {
+        const {id} = this.props
+        this.setState((state) => ({
+            parentId : id,
+        }))
+    }
+
     onCommentDelete = (comment) => {
         let parentId = comment.parentId
         this.props.deleteComment(comment.id, parentId)
     }
 
+    onSelectComment(comment) {
+        console.log('selecioando comentario')
+        this.setState((state) => ({
+            isEdit : true,
+            comment
+        }))
+        console.log(this.state)
+    }
+
+
+
     render() {
-        const {id} = this.props
         let {comments} = this.props
         if (comments === undefined) {
             comments = []
         }
         return (
             <div>
-                <CommentForm />
+                <CommentForm {...this.state} />
                 <ol className="comment-list media-list">
                     {comments.map(c =>
                         <li key={c.id} className="comment even thread-even depth-1">
@@ -40,9 +69,9 @@ class CommentList extends Component {
                                             <p>{c.body}</p>
                                         </div>
                                         <div className="reply comment-reply">
-                                            <a rel="nofollow" className="comment-reply-link btn btn-primary" href="">
-                                                Editar
-                                            </a>
+
+                                            <button className="comment-reply-link btn btn-primary" onClick={() => this.onSelectComment(c)}>Editar</button>
+
                                             <br/><br/>
                                             <button className="comment-reply-link btn btn-primary" onClick={() => this.onCommentDelete(c)}>Apagar</button>
                                         </div>

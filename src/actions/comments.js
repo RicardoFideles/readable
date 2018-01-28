@@ -1,11 +1,10 @@
 import * as types from './constants';
 import { addComment, deleteComment, editComment, voteComment } from '../api/index'
 
-export const createComment = (comment, parentId, callback) => {
+export const createComment = (comment, parentId) => {
     return (dispatch) => {
         addComment(comment)
         .then(comment => {
-            callback()
             dispatch({
                 type: types.ADD_COMMENT,
                 parentId,

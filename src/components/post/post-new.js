@@ -7,11 +7,6 @@ const uuidv1 = require('uuid/v1');
 
 class PostNew extends Component {
 
-  componentWillMount() {
-    console.log('this.props')
-    console.log(this.props)
-  }
-
   addNewPost = (e) => {
     e.preventDefault()
     const title = e.target.title.value;
