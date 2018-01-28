@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { fetchPosts, upVotePost, downVotePost } from '../../actions/posts';
 import { formatDate } from '../../utils'
 import Votes from './votes'
+import CommentList from '../comment/comment-list'
 
 
 class PostDetail extends Component {
@@ -55,6 +56,7 @@ class PostDetail extends Component {
                         </div>
                     </div>
                 </article>
+                <CommentList {...post}/>
             </div>
        )
     }
