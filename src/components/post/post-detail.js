@@ -29,14 +29,15 @@ class PostDetail extends Component {
                             <div className="entry-meta">
                                 <span className="comments_count clearfix entry-comments-link">
                                     <span>
-                                        {post.comments.length}
+                                        {post.comments ? post.comments.length : 0}
                                     </span>
                                 </span>
                                 <Votes
                                     onUpvote={() => {
-                                            onUpVotePost(id)
+                                            console.log('aaa')
+                                            onUpVotePost(post.id)
                                     }}
-                                    onDownvote={() => onDownVotePost(id)}
+                                    onDownvote={() => onDownVotePost(post.id)}
                                     voteScore={post.voteScore}
                                 />
                             </div>
@@ -60,16 +61,8 @@ class PostDetail extends Component {
 }
 const mapStateToProps = ({posts}) => {
     return {
-      posts : posts.posts,
+        posts : posts.posts,
     }
-  }
+}
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        fetchPosts: () => dispatch(fetchPosts()),
-        onUpVotePost : upVotePost,
-        onDownVotePost : downVotePost
-    }
-  }
-
-export default connect(mapStateToProps, mapDispatchToProps)(PostDetail)
+export default connect(mapStateToProps, { fetchPosts: fetchPosts(), onUpVotePost: upVotePost, onDownVotePost : downVotePost })(PostDetail)

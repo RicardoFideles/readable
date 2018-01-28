@@ -68,6 +68,7 @@ export const getPost = (id) => {
 
 // POST /posts/:id
 export const votePost = (id, option) => {
+  console.log('aqcuin vote.')
   return fetch(`${api}/posts/${id}`, {
     method: 'POST',
     headers: {

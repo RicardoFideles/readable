@@ -16,6 +16,7 @@ export default function posts(state = { posts: [] }, action) {
                posts: [...state.posts, action.post]
              }
         case types.UPDATE_VOTE:
+            console.log('update vote')
             return {
                 ...state,
                 posts :  state.posts.map(post => {
