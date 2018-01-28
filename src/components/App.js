@@ -9,21 +9,24 @@ class App extends Component {
 
   render() {
     return (
-      <div className='wrapper'>
+      <div>
         <Header/>
-        <div className="container">
-            <div id="content" className="main-content-inner">
+        <div className="main-content">
+          <div className="container">
+            <div id="content" className="container">
               <div className="row">
-                <Content/>
+                <div className="col-sm-12 col-md-9">
+                  <Content/>
+                </div>
                 <div className="col-sm-12 col-md-3">
                   <Sibebar />
                 </div>
-
               </div>
             </div>
+          </div>
         </div>
-        <Footer/>
-      </div>
+      <Footer/>
+    </div>
     );
   }
 }

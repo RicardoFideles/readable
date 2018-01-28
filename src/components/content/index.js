@@ -11,34 +11,13 @@ class Content extends Component {
     return (
       <div className='content'>
         <Switch>
-          <Route exact
-            path='/'
-            render={() => (
-              <PostList  />
-            )}
-          />
-          {/* <Route exact
-            path='/posts/add'
-            component={PostForm}
-          /> */}
-          {/* <Route
-            path='/posts/:id/edit'
-            render={ ({ match }) => (
-              <PostForm initialValues={this.filterPostById(posts, match.params.id)} />
-            )}
-          /> */}
-          <Route exact
-            path='/posts/:id'
-            render={({ match }) => (
-              <PostDetail id={match.params.id}/>
-            )}
-          />
-          <Route exact
-            path='/categories/:name'
-            render={({ match }) => (
-              <PostList category={match.params.name} />
-            )}
-          />
+          <Route exact path='/' render={() => (<PostList/>)} />
+          <Route exact path='/:category' render={({ match }) => (<PostList category={match.params.category} />)}/>
+          <Route exact path='/newPost' render={({ match }) => (<PostForm category={match.params.category} />)}/>
+          <Route exact path='/:category/:postId' render={({ match }) => (<PostDetail id={match.params.postId}/>)} />
+          <Route exact path='/:category/:postId/edit' render={({ match }) => (<PostForm id={match.params.postId}/>)} />
+          <Route exact path='/:category/:postId/comment' render={({ match }) => (<PostDetail id={match.params.postId}/>)} />
+          <Route exact path='/:category/:postId/commentId/edit' render={({ match }) => (<PostDetail id={match.params.postId}/>)} />
         </Switch>
       </div>
     )

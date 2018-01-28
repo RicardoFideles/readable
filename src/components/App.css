@@ -13142,6 +13142,7 @@ color: #FFF;
 background-color: #E7F6F3;
 } .main-content {
 padding: 60px 0;
+padding-top: 100px;
 }
 .page-header h1.entry-title, .page-header {
 margin-top: 0;
@@ -13437,7 +13438,6 @@ font-size: 16px;
 line-height: 26px;
 }
 .post-meta-info .entry-meta {
-margin-right: 20px;
 border-top: 2px solid #1ABC9C;
 background-color: #E7F6F3;
 }
@@ -13463,11 +13463,12 @@ text-align: center;
 background-color: #1ABC9C;
 }
 .post-meta-info .entry-meta .comments_count span {
-display: inline-block;
-padding: 0 0 0 25px;
-background: url(//ricardofideles.com.br/wp-content/themes/ascent/includes/images/comment-count-icon.png) 0 3px no-repeat;
-font-weight: 700;
-color: #FFF;
+  display: inline-block;
+  padding: 0 0 0 25px;
+  background: url('../assets/img/comment-count-icon.png') 0 3px no-repeat;
+  font-weight: 700;
+  color: #FFF;
+  margin-left :20px;
 }
 .post-meta-info .entry-meta .comments_count span:hover {
 text-decoration: none;
@@ -13764,4 +13765,8 @@ margin: 0 15px;
 width: 100%;
 margin: 0;
 }
+}
+
+.stats {
+  text-align: center;
 }

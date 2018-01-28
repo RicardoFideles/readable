@@ -1,5 +1,5 @@
 import * as types from './constants';
-import { getAllPosts, getComments, addNewPost, votePost } from '../api/index'
+import { getAllPosts, getComments, addNewPost, votePost, editPost } from '../api/index'
 
 export const fetchPosts = () => dispatch => (
     getAllPosts()
@@ -47,6 +47,16 @@ export const downVotePost = (id) => dispatch => (
         .then(post => {
             dispatch({
                 type :  types.UPDATE_VOTE,
+                post
+            })
+        })
+)
+
+export const updatePost = (id, data) => dispatch => (
+    editPost(id, data)
+        .then(post => {
+            dispatch({
+                type : types.EDIT_POST,
                 post
             })
         })
