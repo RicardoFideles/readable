@@ -4,23 +4,32 @@ import { fetchPosts, upVotePost, downVotePost } from '../../actions/posts';
 import { formatDate } from '../../utils'
 import Votes from './votes'
 import CommentList from '../comment/comment-list'
-
+import PostActions  from './post-actions'
 
 class PostDetail extends Component {
 
-    componentWillMount() {
-        if (this.props.posts === undefined) {
-            this.props.fetchPosts()
-        }
+    componentWillUpdate() {
+        console.log('component wiill update')
+        console.log(this.props)
+    }
 
+    componentDidMount() {
+        if (this.props.posts.length === 0) {
+            this.props.fetchPosts()
+                .then((res) => {
+                    console.log('carregando finalizado.')
+                })
+        }
     }
 
     render() {
         const { posts, id, onUpVotePost, onDownVotePost } = this.props
         const post = posts.filter((p) => p.id === id)[0]
+        console.log('renderizando....')
         if (post === undefined) {
             return null
         }
+        console.log(post)
 
         return(
             <div className="row">
@@ -56,7 +65,8 @@ class PostDetail extends Component {
                         </div>
                     </div>
                 </article>
-                <CommentList {...post}/>
+                <PostActions id={post.id} />
+                <CommentList postId={post.id} comments={post.comments} />
             </div>
        )
     }
@@ -67,4 +77,10 @@ const mapStateToProps = ({posts}) => {
     }
 }
 
-export default connect(mapStateToProps, { fetchPosts: fetchPosts(), onUpVotePost: upVotePost, onDownVotePost : downVotePost })(PostDetail)
+const mapDispatchToProps = {
+    fetchPosts,
+    onUpVotePost : upVotePost,
+    onDownVotePost : downVotePost,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostDetail)

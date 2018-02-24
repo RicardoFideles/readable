@@ -1,5 +1,5 @@
 import * as constants from './constants';
-
+const uuidv1 = require('uuid/v1');
 
 const api = constants.BASE_URL
 
@@ -95,14 +95,22 @@ export const getComments = (id) => {
 }
 
 // POST /comments
-export const addComment = (newComment) => {
+export const addComment = (newComment, parentId) => {
+  console.log(newComment)
+  console.log(parentId)
+  console.log('addComment API')
   return fetch(`${api}/comments`, {
     method: 'POST',
     headers: {
       ...headers,
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(newComment)
+    body: JSON.stringify({
+      ...newComment,
+      parentId,
+      id: uuidv1(),
+      timestamp: Date.now()
+    })
   })
   .then(data => data.json())
 }
@@ -118,6 +126,9 @@ export const deleteComment = (id) => {
 
 // PUT /comments/:id
 export const editComment = (id, comment) => {
+  console.log('api, edit')
+  console.log(id)
+  console.log(comment)
   return fetch(`${api}/comments/${id}`, {
     method: 'PUT',
     headers: {

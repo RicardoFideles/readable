@@ -16,7 +16,6 @@ export default function posts(state = { posts: [] }, action) {
                posts: [...state.posts, action.post]
              }
         case types.UPDATE_VOTE:
-            console.log('update vote')
             return {
                 ...state,
                 posts :  state.posts.map(post => {
@@ -42,6 +41,27 @@ export default function posts(state = { posts: [] }, action) {
                     return post
                 })
 
+            }
+        case types.EDIT_COMMENT:
+            console.log('reducer edit comments...')
+            console.log(action)
+            return {
+                ...state,
+                posts: state.posts.map(post => {
+                    if (post.id === action.comment.parentId) {
+                        console.log('encontrei o post')
+                        post.comments.map((c) => {
+                            if (c.id === action.id) {
+                                console.log('encontrei o comentario.')
+                                c.author = action.comment.author
+                                c.body = action.comment.body
+                            }
+                            return c
+                        })
+                    }
+                    console.log(post)
+                    return post
+                })
             }
         case types.DELETE_COMMENT:
         return {

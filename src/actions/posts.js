@@ -1,5 +1,5 @@
 import * as types from './constants';
-import { getAllPosts, getComments, addNewPost, votePost, editPost } from '../api/index'
+import { getAllPosts, getComments, addNewPost, votePost, editPost, deletePost } from '../api/index'
 
 export const fetchPosts = () => dispatch => (
     getAllPosts()
@@ -11,14 +11,12 @@ export const fetchPosts = () => dispatch => (
                         .then(() => post)
                 )
             )
-            .then(posts => dispatch
-                ({
+            .then(posts => dispatch({
                     type: types.GET_POSTS,
                     posts,
                 })
             )
-            .then(res => dispatch
-                ({
+            .then(res => dispatch({
                     type: types.SORT_POST,
                     sortKey: voteScoreKey
                 })
@@ -71,6 +69,18 @@ export const updatePost = (id, data, callback) =>  {
     }
 }
 
+export const removePost = (id) =>  {
+    return dispatch => {
+        deletePost(id)
+        .then(post => {
+            dispatch({
+                type : types.DELETE_POST,
+                post
+            })
+        })
+    }
+}
+
 const timeStampKey = types.SORT_KEY_TIMESTAMP
 
 export const sortPostByTimeStamp = () => {
@@ -82,7 +92,6 @@ export const sortPostByTimeStamp = () => {
         })
     }
 }
-
 
 const voteScoreKey = types.SORT_KEY_VOTE_SCORE
 

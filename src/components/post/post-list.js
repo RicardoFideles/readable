@@ -15,7 +15,9 @@ class PostList extends Component {
     }
 
     render() {
-        const category = this.props.category
+        const {category, goBack} = this.props
+        console.log(goBack)
+        console.log(this.props)
         let posts  = []
         if (category) {
             posts = this.props.posts.filter((p) => p.category === category)
@@ -25,7 +27,7 @@ class PostList extends Component {
         return(
             <div className="row">
                 {posts.map(post =>
-                    <PostItem key={post.id} {...post}/>
+                    <PostItem key={post.id} {...post} goBack={goBack}/>
                 )}
             </div>
        )

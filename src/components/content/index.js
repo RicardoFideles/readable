@@ -13,7 +13,7 @@ class Content extends Component {
     return (
       <div className='content'>
         <Switch>
-          <Route exact path='/' render={() => (<PostList/>)} />
+          <Route exact path='/' render={({history}) => (<PostList {...history}/>)} />
           <Route exact path='/newPost' render={({history}) => (<PostNew {...history}/>)} />
           <Route exact path='/:category' render={({ match }) => (<PostList category={match.params.category} />)}/>
           <Route exact path='/:category/:postId' render={({ match }) => (<PostDetail id={match.params.postId}/>)} />

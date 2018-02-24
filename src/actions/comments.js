@@ -3,11 +3,24 @@ import { addComment, deleteComment, editComment, voteComment } from '../api/inde
 
 export const createComment = (comment, parentId) => {
     return (dispatch) => {
-        addComment(comment)
+        addComment(comment, parentId)
         .then(comment => {
             dispatch({
                 type: types.ADD_COMMENT,
                 parentId,
+                comment
+            })
+        })
+    }
+}
+
+export const updateComment = (id, comment,postId) => {
+    return (dispatch) => {
+        editComment(id,comment)
+        .then(comment => {
+            dispatch({
+                type: types.EDIT_COMMENT,
+                id,
                 comment
             })
         })

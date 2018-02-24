@@ -6,11 +6,10 @@ import { connect } from 'react-redux'
 import { upVotePost, downVotePost } from '../../actions/posts'
 import Votes  from './votes'
 import { formatDate } from '../../utils'
-import FaPencilSquare from 'react-icons/lib/fa/pencil-square';
-import FaTimes from 'react-icons/lib/fa/times-circle';
+import PostActions  from './post-actions'
 
 
-const PostItem = ({id, title, voteScore, category, comments = [], author, timestamp, onUpVotePost, onDownVotePost }) => (
+const PostItem = ({id, title, voteScore, category, comments = [], author, timestamp, onUpVotePost, onDownVotePost, goBack }) => (
     <article className="post type-post status-publish format-standard hentry" key={id}>
         <div className="row">
             <div className="post-meta-info col-sm-12 col-md-2">
@@ -41,25 +40,15 @@ const PostItem = ({id, title, voteScore, category, comments = [], author, timest
                         Leia mais →
                     </Link>
                 </div>
-                <footer className="footer-meta">
-                    <div className="cat-tag-meta-wrap">
-                        <span className="cats-meta">
-                            <FaPencilSquare />
-                            <Link to={`/posts/${id}/edit`}>
-                                Edit
-                            </Link>
-                        </span>
-                        <span className="cats-meta">
-                            <FaTimes />
-                            <Link to={`/posts/${id}/delete`}>
-                                Delete
-                            </Link>
-                        </span>
-                    </div>
-                </footer>
+                <PostActions id={id} goBack={goBack} />
             </div>
         </div>
     </article>
 )
 
-export default connect(null, { onUpVotePost : upVotePost , onDownVotePost : downVotePost })(PostItem)
+const mapDispatchToProps = {
+    onUpVotePost : upVotePost,
+    onDownVotePost : downVotePost,
+}
+
+export default connect(null, mapDispatchToProps)(PostItem)
