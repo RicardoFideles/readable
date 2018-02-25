@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { fetchPosts } from '../../actions/posts';
 import PostItem  from './post-item'
 import PropTypes from 'prop-types';
-import { getPostsOrderedByVotes}  from '../../selectors'
+import { getOrderedPosts}  from '../../selectors'
 
 class PostList extends Component {
 
@@ -33,12 +33,14 @@ class PostList extends Component {
     }
 }
 const mapStateToProps = (state) => {
+    console.log('atualizando.. ')
     return {
-      posts : getPostsOrderedByVotes(state)
+      posts : getOrderedPosts(state)
     }
   }
 
 const mapDispatchToProps = (dispatch) => {
+    console.log('bucando posts..')
     return {
         fetchPosts: () => dispatch(fetchPosts())
     }

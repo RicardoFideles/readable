@@ -34,7 +34,6 @@ class PostDetail extends Component {
                                 </span>
                                 <Votes
                                     onUpvote={() => {
-                                            console.log('aaa')
                                             onUpVotePost(post.id)
                                     }}
                                     onDownvote={() => onDownVotePost(post.id)}

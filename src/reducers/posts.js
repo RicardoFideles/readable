@@ -2,7 +2,7 @@
 import * as types from '../actions/constants';
 import sortBy from 'sort-by'
 
-export default function posts(state = { posts: [] }, action) {
+export default function posts(state = { posts: [], order : types.SORT_KEY_VOTE_SCORE }, action) {
 
     switch (action.type) {
         case types.GET_POSTS:
@@ -30,9 +30,11 @@ export default function posts(state = { posts: [] }, action) {
                         })
             }
         case types.SORT_POST:
+            console.log('ordenar reducer...')
+            console.log('action.sortKey', action.sortKey)
             return {
                 ...state,
-                posts: [].concat(state.posts.sort(sortBy("-"+action.sortKey)))
+                order: action.sortKey
             }
 
         case types.ADD_COMMENT:
@@ -72,9 +74,13 @@ export default function posts(state = { posts: [] }, action) {
             ...state,
             posts: state.posts.map(post => {
                 if (post.id === action.parentId) {
-                    post.comments = post.comments.filter((c) => c.id !== action.commentId)
+                    return {
+                        ...post,
+                        comments : post.comments.filter((c) => c.id !== action.commentId)
+                    }
+                } else {
+                    return post
                 }
-                return post
             })
 
         }

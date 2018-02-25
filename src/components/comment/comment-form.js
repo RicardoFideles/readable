@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm , reset} from 'redux-form';
 import { createComment, updateComment } from '../../actions/comments';
 import PropTypes from 'prop-types';
 
@@ -13,13 +13,13 @@ const CommentForm = (props) => {
             <h3 id="reply-title" className="comment-reply-title">
                 Adicionar um comentário
             </h3>
-            <form method="post" id="commentform" className="comment-form" onSubmit={handleSubmit(data => {
+            <form method="post" id="commentform" name="comment-form" className="comment-form" onSubmit={handleSubmit(data => {
                 const { author, body } = data;
                 data = { author, body };
                 if (id) {
-                    updateComment(id, data, postId);
+                    updateComment(id, data, postId)
                 } else {
-                    createComment(data, postId);
+                    createComment(data, postId)
                 }
                 })}>
                 <p>
@@ -50,9 +50,13 @@ const CommentForm = (props) => {
         </div>
     )
 }
+
+const afterSubmit = (result, dispatch) =>
+  dispatch(reset('comment'));
+
 export default reduxForm({
     form: 'comment',
-    enableReinitialize: true
+    onSubmitSuccess: afterSubmit,
   })(connect(
     undefined,
     { createComment, updateComment}

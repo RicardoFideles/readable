@@ -8,9 +8,6 @@ import PropTypes from 'prop-types';
 
 const PostActions = ({id, onDelete, go}) =>
     {
-        console.log(id)
-        console.log(onDelete)
-        console.log(go)
         return(
             <footer className="footer-meta">
                 <div className="cat-tag-meta-wrap">
