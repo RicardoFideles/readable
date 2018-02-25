@@ -6,10 +6,10 @@ class PostEdit extends Component {
 
   addNewPost = (e) => {
     e.preventDefault()
-    const title = e.target.title.value;
-    const body = e.target.body.value;
-    const author = e.target.author.value;
-    const category = e.target.category.value;
+    // const title = e.target.title.value;
+    // const body = e.target.body.value;
+    // const author = e.target.author.value;
+    // const category = e.target.category.value;
 
     const submitPost = {
       title: e.target.title.value,

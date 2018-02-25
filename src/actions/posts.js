@@ -16,11 +16,11 @@ export const fetchPosts = () => dispatch => (
                     posts,
                 })
             )
-            .then(res => dispatch({
-                    type: types.SORT_POST,
-                    sortKey: voteScoreKey
-                })
-            )
+            // .then(res => dispatch({
+            //         type: types.SORT_POST,
+            //         sortKey: voteScoreKey
+            //     })
+            // )
         )
     )
 
@@ -38,7 +38,6 @@ export const addPost = (post, callback) => dispatch => (
 export const upVotePost = (id) => dispatch => (
     votePost(id, types.OPTION_UPVOTE)
         .then(post => {
-            console.log('aqui...')
             dispatch({
                 type :  types.UPDATE_VOTE,
                 post
@@ -84,7 +83,6 @@ export const removePost = (id) =>  {
 const timeStampKey = types.SORT_KEY_TIMESTAMP
 
 export const sortPostByTimeStamp = () => {
-    console.log('sortPostByTimeStamp')
     return  dispatch => {
         dispatch({
             type: types.SORT_POST,

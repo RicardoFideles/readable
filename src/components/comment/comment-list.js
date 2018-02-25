@@ -16,11 +16,6 @@ class CommentList extends Component {
         this.onSelectComment = this.onSelectComment.bind(this);
     }
 
-    componentWillUpdate() {
-        console.log('commentlist---')
-        console.log(this.props)
-    }
-
     componentWillMount() {
         const {postId} = this.props
         this.setState((state) => ({
@@ -40,18 +35,11 @@ class CommentList extends Component {
 
 
     render() {
-        console.log('rendizando lista de cometnarios')
         let {comments} = this.props
         if (comments === undefined) {
             comments = []
         }
-
-        console.log(comments)
-
         const {isEdit, parentId, comment }  = this.state
-
-        console.log(this.state)
-
         return (
             <div>
                 <CommentForm initialValues={comment} isEdit={isEdit} postId={parentId} id={comment.id ? comment.id : null} />
@@ -78,7 +66,6 @@ class CommentList extends Component {
 
                                             <button className="comment-reply-link btn btn-primary" onClick={(event) => {
                                                 event.preventDefault();
-                                                console.log(c)
                                                 this.onSelectComment(c)
                                             } }>Editar</button>
 

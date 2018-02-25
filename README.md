@@ -17,5 +17,8 @@ React-Redux aplication that allows user to create posts and comments and vote.
 1. React-Redux
 2. React Router
 3. Redux Thunk
+4. PropTypes
+5. Reselect
+
 
 

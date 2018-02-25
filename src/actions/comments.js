@@ -1,5 +1,5 @@
 import * as types from './constants';
-import { addComment, deleteComment, editComment, voteComment } from '../api/index'
+import { addComment, deleteComment, editComment } from '../api/index'
 
 export const createComment = (comment, parentId) => {
     return (dispatch) => {

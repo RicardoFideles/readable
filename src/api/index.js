@@ -66,7 +66,6 @@ export const getPost = (id) => {
 
 // POST /posts/:id
 export const votePost = (id, option) => {
-  console.log('aqcuin vote.')
   return fetch(`${api}/posts/${id}`, {
     method: 'POST',
     headers: {
@@ -96,9 +95,6 @@ export const getComments = (id) => {
 
 // POST /comments
 export const addComment = (newComment, parentId) => {
-  console.log(newComment)
-  console.log(parentId)
-  console.log('addComment API')
   return fetch(`${api}/comments`, {
     method: 'POST',
     headers: {
@@ -126,9 +122,6 @@ export const deleteComment = (id) => {
 
 // PUT /comments/:id
 export const editComment = (id, comment) => {
-  console.log('api, edit')
-  console.log(id)
-  console.log(comment)
   return fetch(`${api}/comments/${id}`, {
     method: 'PUT',
     headers: {

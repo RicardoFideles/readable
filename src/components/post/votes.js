@@ -1,6 +1,7 @@
 import React from 'react';
 import FaThumbsOUp from 'react-icons/lib/fa/thumbs-o-up';
 import FaThumbsODown from 'react-icons/lib/fa/thumbs-o-down';
+import PropTypes from 'prop-types';
 
 const Votes = ({ voteScore, onUpvote, onDownvote }) => (
   <div className='stats'>
@@ -16,5 +17,10 @@ const Votes = ({ voteScore, onUpvote, onDownvote }) => (
   </div>
 )
 
-
 export default Votes;
+
+Votes.propTypes = {
+  voteScore : PropTypes.number,
+  onUpvote : PropTypes.func,
+  onDownvote : PropTypes.func,
+}

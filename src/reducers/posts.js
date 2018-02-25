@@ -20,9 +20,13 @@ export default function posts(state = { posts: [] }, action) {
                 ...state,
                 posts :  state.posts.map(post => {
                             if (post.id === action.post.id) {
-                                post.voteScore = action.post.voteScore
+                                return {
+                                    ...post,
+                                    voteScore : action.post.voteScore
+                                }
+                            } else {
+                                return post
                             }
-                            return post
                         })
             }
         case types.SORT_POST:
@@ -43,25 +47,25 @@ export default function posts(state = { posts: [] }, action) {
 
             }
         case types.EDIT_COMMENT:
-            console.log('reducer edit comments...')
-            console.log(action)
             return {
                 ...state,
                 posts: state.posts.map(post => {
-                    if (post.id === action.comment.parentId) {
-                        console.log('encontrei o post')
-                        post.comments.map((c) => {
-                            if (c.id === action.id) {
-                                console.log('encontrei o comentario.')
-                                c.author = action.comment.author
-                                c.body = action.comment.body
+                    return {
+                      ...post,
+                      comments: post.comments.map(comment => {
+                        if (comment.id === action.id) {
+                            return {
+                                ...comment,
+                                author: action.comment.author,
+                                body: action.comment.body
                             }
-                            return c
-                        })
+                        } else {
+                            return comment
+                        }
+
+                      })
                     }
-                    console.log(post)
-                    return post
-                })
+                  })
             }
         case types.DELETE_COMMENT:
         return {

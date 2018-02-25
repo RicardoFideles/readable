@@ -5,32 +5,22 @@ import { formatDate } from '../../utils'
 import Votes from './votes'
 import CommentList from '../comment/comment-list'
 import PostActions  from './post-actions'
+import PropTypes from 'prop-types';
 
 class PostDetail extends Component {
-
-    componentWillUpdate() {
-        console.log('component wiill update')
-        console.log(this.props)
-    }
 
     componentDidMount() {
         if (this.props.posts.length === 0) {
             this.props.fetchPosts()
-                .then((res) => {
-                    console.log('carregando finalizado.')
-                })
         }
     }
 
     render() {
-        const { posts, id, onUpVotePost, onDownVotePost } = this.props
+        const { posts, id, onUpVotePost, onDownVotePost, go } = this.props
         const post = posts.filter((p) => p.id === id)[0]
-        console.log('renderizando....')
         if (post === undefined) {
             return null
         }
-        console.log(post)
-
         return(
             <div className="row">
                 <article className="post type-post status-publish format-standard hentry">
@@ -65,7 +55,7 @@ class PostDetail extends Component {
                         </div>
                     </div>
                 </article>
-                <PostActions id={post.id} />
+                <PostActions id={post.id} go={go} />
                 <CommentList postId={post.id} comments={post.comments} />
             </div>
        )
@@ -84,3 +74,11 @@ const mapDispatchToProps = {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostDetail)
+
+PostDetail.propTypes = {
+    id : PropTypes.string,
+    posts : PropTypes.array,
+    onUpVotePost : PropTypes.func,
+    onDownVotePost : PropTypes.func,
+    go : PropTypes.func
+}

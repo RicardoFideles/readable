@@ -3,8 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { createComment, updateComment } from '../../actions/comments';
-
-
+import PropTypes from 'prop-types';
 
 const CommentForm = (props) => {
     const { id, postId, handleSubmit, pristine, submitting, createComment, updateComment } = props;
@@ -58,3 +57,8 @@ export default reduxForm({
     undefined,
     { createComment, updateComment}
   )(CommentForm))
+
+
+  CommentForm.propTypes = {
+    id : PropTypes.string
+  }

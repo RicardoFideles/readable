@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { fetchPosts } from '../../actions/posts';
 import PostItem  from './post-item'
 import PropTypes from 'prop-types';
+import { getPostsOrderedByVotes}  from '../../selectors'
 
 class PostList extends Component {
 
@@ -15,9 +16,7 @@ class PostList extends Component {
     }
 
     render() {
-        const {category, goBack} = this.props
-        console.log(goBack)
-        console.log(this.props)
+        const {category, go} = this.props
         let posts  = []
         if (category) {
             posts = this.props.posts.filter((p) => p.category === category)
@@ -27,15 +26,15 @@ class PostList extends Component {
         return(
             <div className="row">
                 {posts.map(post =>
-                    <PostItem key={post.id} {...post} goBack={goBack}/>
+                    <PostItem key={post.id} {...post} go={go}/>
                 )}
             </div>
        )
     }
 }
-const mapStateToProps = ({posts}) => {
+const mapStateToProps = (state) => {
     return {
-      posts : posts.posts
+      posts : getPostsOrderedByVotes(state)
     }
   }
 
