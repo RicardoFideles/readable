@@ -1,15 +1,13 @@
 import * as types from './constants';
 
-import {
-    getAllCategories
-} from '../api/index'
+import { getCategories } from '../api/index';
 
-export const getCategories = (categories) => ({
-    type: types.GET_CATEGORIES,
-    categories
-})
+export const updateCategoriesList = categories => ({
+  type: types.GET_CATEGORIES,
+  categories,
+});
 
-export const fetchCategories = () => dispatch => (
-  getAllCategories()
-    .then(categories => dispatch(getCategories(categories)))
-)
+export const getAllCategories = () => dispatch =>
+  getCategories().then(categories =>
+    dispatch(updateCategoriesList(categories))
+  );
