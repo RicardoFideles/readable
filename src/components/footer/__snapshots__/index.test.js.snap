@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders without crashing 1`] = `
+<footer
+  className="site-footer"
+  id="colophon"
+  role="contentinfo"
+>
+  <div
+    id="footer-info"
+  >
+    <div
+      className="container"
+    >
+      <div
+        className="site-info"
+      >
+        © 2018 All rights reserved
+        <span
+          className="sep"
+        >
+           | 
+        </span>
+        Readable - Udacity - Ricardo Fideles
+      </div>
+    </div>
+  </div>
+</footer>
+`;

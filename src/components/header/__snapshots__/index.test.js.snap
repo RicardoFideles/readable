@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders without crashing 1`] = `
+<header
+  className="site-header"
+  id="masthead"
+  role="banner"
+>
+  <div
+    className="header-top"
+  >
+    <div
+      className="container"
+    >
+      <div
+        className="row"
+      />
+    </div>
+  </div>
+  <div
+    className="header-bottom sticky"
+    id="header-main"
+  >
+    <div
+      className="header-bottom-inner"
+    >
+      <div
+        className="container"
+      >
+        <div
+          className="row"
+        >
+          <div
+            className="col-sm-3"
+          >
+            <div
+              id="logo"
+            >
+              <div
+                className="site-header-inner col-sm-12"
+              >
+                <div
+                  className="site-branding"
+                >
+                  <h1
+                    className="site-title"
+                  >
+                    <Link
+                      replace={false}
+                      to="/"
+                    >
+                      Ricardo Fideles
+                    </Link>
+                  </h1>
+                  <h4>
+                    Udacity - Readable Project
+                  </h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+`;
