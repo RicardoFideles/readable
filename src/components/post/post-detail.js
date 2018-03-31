@@ -11,6 +11,7 @@ import Votes from './votes';
 import CommentList from '../comment/comment-list';
 import PostActions from './post-actions';
 import PropTypes from 'prop-types';
+import NotFound from '../page/PageNotFound';
 
 class PostDetail extends Component {
   componentDidMount() {
@@ -23,7 +24,7 @@ class PostDetail extends Component {
     const { posts, id, onUpVotePost, onDownVotePost } = this.props;
     const post = posts.filter(p => p.id === id)[0];
     if (post === undefined) {
-      return null;
+      return <NotFound />;
     }
     return (
       <div className="row">
