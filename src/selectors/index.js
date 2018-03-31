@@ -1,17 +1,13 @@
 import { createSelector } from 'reselect';
-import sortBy from 'sort-by';
 import * as types from '../actions/constants';
 
 const getPosts = state => state.posts.posts;
 const getOrder = state => {
-  console.log('STATE');
-  console.log(state);
   return state.sort.posts.type;
 };
 export const getOrderedPosts = createSelector(
   [getPosts, getOrder],
   (posts, order) => {
-    console.log('selector ==>', order);
     switch (order) {
       case types.SORT_KEY_VOTE_SCORE:
         let newArray2 = posts.slice();
@@ -20,7 +16,6 @@ export const getOrderedPosts = createSelector(
         let newArray = posts.slice();
         return sortArrayByKeyDesc(newArray, types.SORT_KEY_TIMESTAMP);
       default:
-        console.log('nunca deveria entrar aqui');
         return sortArrayByKeyDesc(posts, types.SORT_KEY_VOTE_SCORE);
     }
   }

@@ -9,7 +9,6 @@ import {
 } from '../../actions/constants';
 
 const SortPosts = ({ onSelectSortBy, sortBy }) => {
-  console.log('oo');
   return (
     <aside id="categories-1" className="widget widget_categories">
       <h3 className="widget-title">Filtrar por</h3>

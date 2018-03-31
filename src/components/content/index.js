@@ -10,6 +10,10 @@ import PageNotFound from '../page/PageNotFound';
 import { getOrderedPosts } from '../../selectors';
 
 class Content extends Component {
+  filterPostsByCategory(posts, category) {
+    return posts.filter(post => post.category === category);
+  }
+
   render() {
     const { posts } = this.props;
 
@@ -22,7 +26,9 @@ class Content extends Component {
             exact
             path="/:category"
             render={({ match }) => (
-              <PostList category={match.params.category} />
+              <PostList
+                posts={this.filterPostsByCategory(posts, match.params.category)}
+              />
             )}
           />
           <Route

@@ -1,16 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { sortPostByTimeStamp, sortPostByVoteScore } from '../../actions/posts';
 import SortPosts from './sort-posts';
 
 class Sidebar extends Component {
   render() {
-    const {
-      categories,
-      onSortPostByVoteScore,
-      onSortPostByTimeStamp,
-    } = this.props;
+    const { categories } = this.props;
     return (
       <div className="sidebar">
         <aside id="categories-1" className="widget widget_categories">

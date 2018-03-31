@@ -26,13 +26,6 @@ export default function posts(state = { posts: [] }, action) {
           }
         }),
       };
-    // case types.SORT_POST:
-    //     console.log('ordenar reducer...')
-    //     console.log('action.sortKey', action.sortKey)
-    //     return {
-    //         ...state,
-    //         order: action.sortKey
-    //     }
 
     case types.ADD_COMMENT:
       return {
