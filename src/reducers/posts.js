@@ -43,6 +43,9 @@ export default function posts(state = { posts: [] }, action) {
         ...state,
         posts: state.posts.map(post => {
           if (post.id === action.parentId) {
+            if (post.comments == undefined) {
+              post.comments = [];
+            }
             post.comments = [...post.comments, action.comment];
           }
           return post;

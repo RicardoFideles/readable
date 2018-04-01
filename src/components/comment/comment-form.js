@@ -30,7 +30,9 @@ const CommentForm = props => {
           const { author, body } = data;
           data = { author, body };
           if (id) {
-            updateComment(id, data, postId);
+            updateComment(id, data, postId, function() {
+              clear();
+            });
           } else {
             createComment(data, postId);
           }
@@ -49,7 +51,9 @@ const CommentForm = props => {
           />
         </p>
         <p className="form-submit">
-          <button type="button">Cancelar</button>
+          <button type="button" onClick={() => clear()}>
+            Cancelar
+          </button>
           <button type="submit" disabled={pristine || submitting}>
             Postar
           </button>
