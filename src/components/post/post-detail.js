@@ -9,7 +9,7 @@ import {
 import { formatDate } from '../../utils';
 import Votes from './votes';
 import CommentList from '../comment/comment-list';
-import PostActions from './post-actions';
+import PostActions from './PostActionsContainer';
 import PropTypes from 'prop-types';
 import NotFound from '../page/PageNotFound';
 

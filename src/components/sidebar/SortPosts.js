@@ -1,14 +1,10 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
-import { setSortBy } from '../../actions/sort';
-
-import {
+const SortPosts = ({
+  onSelectSortBy,
   SORT_KEY_TIMESTAMP,
   SORT_KEY_VOTE_SCORE,
-} from '../../actions/constants';
-
-const SortPosts = ({ onSelectSortBy, sortBy }) => {
+}) => {
   return (
     <aside id="categories-1" className="widget widget_categories">
       <h3 className="widget-title">Filtrar por</h3>
@@ -22,12 +18,4 @@ const SortPosts = ({ onSelectSortBy, sortBy }) => {
   );
 };
 
-const mapStateToProps = ({ sortBy }) => ({
-  sortBy,
-});
-
-const mapDispatchToProps = dispatch => ({
-  onSelectSortBy: order => dispatch(setSortBy(order)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(SortPosts);
+export default SortPosts;

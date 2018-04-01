@@ -17,7 +17,6 @@ class PostEdit extends Component {
       author: e.target.author.value,
       category: e.target.category.value,
     };
-
     this.props.updatePost(this.props.id, submitPost, () =>
       this.props.history.goBack()
     );

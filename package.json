@@ -14,8 +14,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom --setupFiles='./src/setupTest.js' ",
     "eject": "react-scripts eject",
-    "test:coverage":
-      "react-scripts test --env=jsdom --coverage --setupFiles='./src/setupTest.js' "
+    "test:coverage": "react-scripts test --env=jsdom --coverage --setupFiles='./src/setupTest.js' "
   },
   "devDependencies": {
     "enzyme": "^3.3.0",
@@ -26,6 +25,7 @@
     "react-icons": "^2.2.7",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
+    "react-test-renderer": "^16.3.0",
     "redux": "^3.7.2",
     "redux-form": "^7.2.0",
     "redux-mock-store": "^1.5.1",
@@ -41,6 +41,8 @@
       "!src/api/*",
       "!src/reducers/index.js"
     ],
-    "snapshotSerializers": ["enzyme-to-json/serializer"]
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
   }
 }

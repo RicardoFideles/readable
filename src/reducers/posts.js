@@ -12,6 +12,17 @@ export default function posts(state = { posts: [] }, action) {
         ...state,
         posts: [...state.posts, action.post],
       };
+    case types.EDIT_POST:
+      return {
+        ...state,
+        posts: state.posts.map(post => {
+          if (post.id == action.post.id) {
+            return action.post;
+          } else {
+            return post;
+          }
+        }),
+      };
     case types.UPDATE_VOTE:
       return {
         ...state,
@@ -41,6 +52,7 @@ export default function posts(state = { posts: [] }, action) {
       return {
         ...state,
         posts: state.posts.map(post => {
+          console.log(post);
           return {
             ...post,
             comments: post.comments.map(comment => {

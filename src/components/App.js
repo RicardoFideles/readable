@@ -10,7 +10,7 @@ import { getAllPostsWithComments } from '../actions/posts';
 import Header from './header';
 import Content from './content';
 import Footer from './footer';
-import Sibebar from './sidebar';
+import Sibebar from './sidebar/SidebarContainer';
 
 class App extends Component {
   componentDidMount() {

@@ -1,11 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { withRouter } from 'react-router-dom';
 
 import FaPencilSquare from 'react-icons/lib/fa/pencil-square';
 import FaTimes from 'react-icons/lib/fa/times-circle';
-import { removePost } from '../../actions/posts';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 const PostActions = ({ id, onDelete, history }) => {
@@ -33,7 +30,7 @@ const PostActions = ({ id, onDelete, history }) => {
   );
 };
 
-export default withRouter(connect(null, { onDelete: removePost })(PostActions));
+export default PostActions;
 
 PostActions.propTypes = {
   id: PropTypes.string,
